@@ -1,15 +1,25 @@
 Summary:	Library of Assorted Spiffy Things
 Name:		libast
-Version:	0.3
-Release:	2
+Version:	0.4
+Release:	1
 License:	BSD
-Group:		Libraries		
+Group:		Libraries
+Group(de):	Libraries
+Group(es):	Bibliotecas
+Group(fr):	Librairies
+Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	Библиотеки
+Group(uk):	Б╕бл╕отеки
 Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
 URL:		http://www.eterm.org/
-BuildRequires:	freetype1-devel
 BuildRequires:	XFree86-devel
-BuildRequires:	imlib2-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	freetype1-devel
 BuildRequires:	glibc-devel
+BuildRequires:	imlib2-devel
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -52,25 +62,26 @@ Libast static libraries.
 %description devel -l pl
 Biblioteki statyczne libast.
 
-
 %prep
 %setup -q
 
 %build
-  %configure2_13 --prefix=%{_prefix} --bindir=%{_bindir} --libdir=%{_libdir} --includedir=%{_includedir}
+libtoolize --copy --force
+aclocal
+autoconf
+automake -a -c
+%configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
 
 gzip -9nf ChangeLog README
 
-%post
-/sbin/ldconfig
-
-%postun
-/sbin/ldconfig
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
