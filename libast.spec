@@ -56,8 +56,8 @@ Biblioteki statyczne libast.
 %setup -q
 
 %build
-%{__autoconf}
-%configure
+#%%{__autoconf}
+%configure2_13
 %{__make}
 
 %install
