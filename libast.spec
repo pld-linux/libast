@@ -1,7 +1,7 @@
 Summary:	Library of Assorted Spiffy Things
 Name:		libast
 Version:	0.3
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries		
 Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
@@ -44,7 +44,7 @@ Group(pl):	X11/Programowanie/Biblioteki
 Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
 Group(ru):	X11/Разработка/Библиотеки
 Group(uk):	X11/Розробка/Б╕бл╕отеки
-Requires:	%{name} = %{version}
+Requires:	%{name}-devel = %{version}
 
 %description static
 Libast static libraries.
