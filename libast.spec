@@ -1,8 +1,8 @@
 Summary:	Library of Assorted Spiffy Things
 Summary(pl):	Biblioteka AST (Assorted Spiffy Things)
 Name:		libast
-Version:	0.4
-Release:	2
+version:	0.5
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
@@ -56,11 +56,7 @@ Biblioteki statyczne libast.
 %setup -q
 
 %build
-rm -f missing
-%{__libtoolize}
-%{__aclocal}
 %{__autoconf}
-%{__automake}
 %configure
 %{__make}
 
@@ -77,7 +73,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/libast-test
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
