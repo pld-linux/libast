@@ -9,8 +9,8 @@ Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
 # Source0-md5:	335ead8e8168bc06284c822f1f655eb8
 URL:		http://www.eterm.org/
 BuildRequires:	XFree86-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
+#BuildRequires:	autoconf
+#BuildRequires:	automake
 BuildRequires:	freetype1-devel
 BuildRequires:	glibc-devel
 BuildRequires:	imlib2-devel
@@ -50,7 +50,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Libast static libraries.
 
-%description devel -l pl
+%description static -l pl
 Biblioteki statyczne libast.
 
 %prep
@@ -64,21 +64,22 @@ Biblioteki statyczne libast.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
-
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
+%doc ChangeLog README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc ChangeLog README
 %attr(755,root,root) %{_bindir}/%{name}-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
