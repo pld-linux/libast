@@ -6,6 +6,7 @@ Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
+# Source0-md5:	335ead8e8168bc06284c822f1f655eb8
 URL:		http://www.eterm.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
