@@ -56,7 +56,7 @@ Biblioteki statyczne libast.
 %setup -q
 
 %build
-libtoolize --copy --force
+%{__libtoolize}
 aclocal
 %{__autoconf}
 %{__automake}
