@@ -56,8 +56,9 @@ Biblioteki statyczne libast.
 %setup -q
 
 %build
+rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
@@ -67,8 +68,6 @@ aclocal
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
-
-gzip -9nf ChangeLog README
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -83,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
+%doc ChangeLog README
 %attr(755,root,root) %{_bindir}/%{name}-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
