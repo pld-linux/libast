@@ -2,19 +2,18 @@ Summary:	Library of Assorted Spiffy Things
 Summary(pl):	Biblioteka AST (Assorted Spiffy Things)
 Name:		libast
 Version:	0.5
-Release:	3
+Release:	4
 License:	BSD
 Group:		Libraries
 Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
 # Source0-md5:	335ead8e8168bc06284c822f1f655eb8
+Patch0:		%{name}-am18.patch
 URL:		http://www.eterm.org/
 BuildRequires:	XFree86-devel
-#BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype1-devel
-BuildRequires:	glibc-devel
 BuildRequires:	imlib2-devel
-BuildRequires:	libtool
+BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,7 +32,7 @@ pomocy odpluskwiaj±cych i parê podobnych narzêdzi.
 Summary:	Library of Assorted Spiffy Things header files
 Summary(pl):	Pliki nag³ówkowe biblioteki AST
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files and development documentation for libast.
@@ -45,7 +44,7 @@ Pliki nag³ówkowe i dokumentacja programisty do libast.
 Summary:	Libast static libraries
 Summary(pl):	Biblioteki statyczne libast
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Libast static libraries.
@@ -55,10 +54,10 @@ Biblioteki statyczne libast.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 cp /usr/share/automake/config.sub .
-#%%{__autoconf}
 %configure2_13
 %{__make}
 
