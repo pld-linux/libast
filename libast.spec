@@ -1,17 +1,15 @@
 Summary:	Library of Assorted Spiffy Things
 Summary(pl):	Biblioteka AST (Assorted Spiffy Things)
 Name:		libast
-Version:	0.5
-Release:	6
+Version:	0.6.1
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
 # Source0-md5:	335ead8e8168bc06284c822f1f655eb8
-Patch0:		%{name}-am18.patch
 URL:		http://www.eterm.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	automake
-BuildRequires:	freetype1-devel
 BuildRequires:	imlib2-devel
 BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -54,7 +52,6 @@ Biblioteki statyczne libast.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 cp /usr/share/automake/config.sub .
