@@ -31,6 +31,9 @@ Summary:	Library of Assorted Spiffy Things header files
 Summary(pl):	Pliki nag³ówkowe biblioteki AST
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	XFree86-devel
+Requires:	imlib2-devel
+Requires:	pcre-devel
 
 %description devel
 Header files and development documentation for libast.
