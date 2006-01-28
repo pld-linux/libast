@@ -1,12 +1,12 @@
 Summary:	Library of Assorted Spiffy Things
 Summary(pl):	Biblioteka AST (Assorted Spiffy Things)
 Name:		libast
-Version:	0.6.1
+Version:	0.7
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
-# Source0-md5:	1cbbf86a0afb74a5905dc92982117250
+# Source0-md5:	a9ec3b2da317f35869316e6d9571d296
 URL:		http://www.eterm.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	automake
@@ -54,8 +54,8 @@ Biblioteki statyczne libast.
 %setup -q
 
 %build
-cp /usr/share/automake/config.sub .
-%configure2_13
+cp -f /usr/share/automake/config.sub .
+%configure
 %{__make}
 
 %install
@@ -73,16 +73,17 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libast.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/%{name}-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
-%{_aclocaldir}/*
+%doc DESIGN
+%attr(755,root,root) %{_bindir}/libast-config
+%attr(755,root,root) %{_libdir}/libast.so
+%{_libdir}/libast.la
+%{_includedir}/libast*
+%{_aclocaldir}/libast.m4
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libast.a
