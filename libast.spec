@@ -1,5 +1,5 @@
 Summary:	Library of Assorted Spiffy Things
-Summary(pl.UTF-8):   Biblioteka AST (Assorted Spiffy Things)
+Summary(pl.UTF-8):	Biblioteka AST (Assorted Spiffy Things)
 Name:		libast
 Version:	0.7
 Release:	1
@@ -28,7 +28,7 @@ pomocy odpluskwiających i parę podobnych narzędzi.
 
 %package devel
 Summary:	Library of Assorted Spiffy Things header files
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki AST
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki AST
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	XFree86-devel
@@ -43,7 +43,7 @@ Pliki nagłówkowe i dokumentacja programisty do libast.
 
 %package static
 Summary:	Libast static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne libast
+Summary(pl.UTF-8):	Biblioteki statyczne libast
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
