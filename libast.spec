@@ -12,7 +12,6 @@ Group:		Libraries
 Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
 # Source0-md5:	a9ec3b2da317f35869316e6d9571d296
 URL:		http://www.eterm.org/
-BuildRequires:	XFree86-devel
 BuildRequires:	automake
 BuildRequires:	imlib2-devel
 BuildRequires:	pcre-devel
@@ -35,7 +34,6 @@ Summary:	Library of Assorted Spiffy Things header files
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki AST
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	XFree86-devel
 Requires:	imlib2-devel
 Requires:	pcre-devel
 
