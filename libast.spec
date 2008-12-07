@@ -6,7 +6,7 @@ Summary:	Library of Assorted Spiffy Things
 Summary(pl.UTF-8):	Biblioteka AST (Assorted Spiffy Things)
 Name:		libast
 Version:	0.7
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
