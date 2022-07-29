@@ -1,0 +1,21 @@
+--- libast-0.8/libast.m4.orig	2020-02-28 21:20:00.000000000 +0100
++++ libast-0.8/libast.m4	2022-07-29 18:56:53.598009192 +0200
+@@ -233,9 +233,6 @@ AC_DEFUN([AST_IMLIB2_SUPPORT], [
+                 AC_DEFINE([LIBAST_IMLIB2_SUPPORT], [1], [Define for Imlib2 support.])
+                 LIBAST_IMLIB2_SUPPORT="Imlib2"
+             else
+-                AC_CHECK_LIB(m, pow, LIBS="-lm $LIBS")
+-                AC_CHECK_LIB(dl, dlopen, LIBS="-ldl $LIBS")
+-                AC_CHECK_LIB(freetype, FT_Init_FreeType, GRLIBS="-lfreetype $GRLIBS", , $GRLIBS)
+                 AC_CHECK_LIB(Imlib2, imlib_create_image, [
+                                 GRLIBS="-lImlib2 $GRLIBS"
+                                 AC_DEFINE([LIBAST_IMLIB2_SUPPORT], [1], [Define for Imlib2 support.])
+@@ -456,7 +453,7 @@ AC_DEFUN([AST_FLAGS], [
+     CFLAGS=${CFLAGS--O}
+     LDFLAGS=`eval eval eval eval eval echo "-L$libdir -L$prefix/lib ${LDFLAGS--O}"`
+     LDFLAGS=`echo $LDFLAGS | tr ' ' '\n' | uniq | grep -v NONE | tr '\n' ' '`
+-    LIBS="$GRLIBS $X_PRE_LIBS $LIBS $X_EXTRA_LIBS"
++    LIBS="$GRLIBS $LIBS $X_EXTRA_LIBS"
+ ])
+ 
+ dnl#

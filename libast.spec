@@ -1,20 +1,24 @@
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static library
+%bcond_without	static_libs	# static library
 #
 Summary:	Library of Assorted Spiffy Things
 Summary(pl.UTF-8):	Biblioteka AST (Assorted Spiffy Things)
 Name:		libast
-Version:	0.7
-Release:	4
+Version:	0.8
+Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://www.eterm.org/download/%{name}-%{version}.tar.gz
-# Source0-md5:	a9ec3b2da317f35869316e6d9571d296
+#Source0Download: https://github.com/mej/libast/tags
+Source0:	https://github.com/mej/libast/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	0e625e406fe6ddd0e053baf719373f55
+Patch0:		%{name}-link.patch
 URL:		http://www.eterm.org/
 BuildRequires:	automake
+BuildRequires:	curl-devel >= 7.9.0
 BuildRequires:	imlib2-devel
 BuildRequires:	pcre-devel
+BuildRequires:	xorg-lib-libX11-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,9 +61,14 @@ Biblioteki statyczne libast.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-cp -f /usr/share/automake/config.sub .
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	%{!?with_static_libs:--disable-static}
 %{__make}
@@ -69,6 +78,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# broken install
+%{__mv} $RPM_BUILD_ROOT%{_includedir}/{sysdefs,types}.h $RPM_BUILD_ROOT%{_includedir}/libast
+
+# obsoleted by libast-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libast.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -87,8 +102,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc DESIGN
 %attr(755,root,root) %{_bindir}/libast-config
 %attr(755,root,root) %{_libdir}/libast.so
-%{_libdir}/libast.la
-%{_includedir}/libast*
+%{_includedir}/libast
+%{_includedir}/libast.h
 %{_aclocaldir}/libast.m4
 
 %if %{with static_libs}
